@@ -1,0 +1,15 @@
+[
+{
+  "modid": "usefultools",
+  "name": "Useful Tools",
+  "description": "Tools that are useful.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["VpzomTrrfrt"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
