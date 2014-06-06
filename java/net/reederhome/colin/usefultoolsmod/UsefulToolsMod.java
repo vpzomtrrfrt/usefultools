@@ -44,7 +44,8 @@ public class UsefulToolsMod {
 		
 		//GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
 		GameRegistry.addRecipe(new ItemStack(obsidiPlate), "oo", 'o', Blocks.obsidian);
-		GameRegistry.addRecipe(new ShapedOreRecipe(autoClicker, "www", "wrw", "rpr", 'w', "plankWood", 'r', "blockCobble", 'p', Items.redstone));
+		GameRegistry.addRecipe(new ShapedOreRecipe(autoClicker, "www", "wrw", "rpr", 'w', "plankWood", 'r', Blocks.cobblestone, 'p', Items.redstone));
+		GameRegistry.addRecipe(new ShapedOreRecipe(itemRemoteInventory, "wiw", "wew", "wiw", 'w', "plankWood", 'i', "ingotIron", 'e', Items.ender_pearl));
 	}
 	
 	private int registerEntity(Class cl, String name) {
