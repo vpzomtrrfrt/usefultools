@@ -14,7 +14,7 @@ public class TileEntityRemoteInventory extends TileEntity implements IInventory 
 		super.updateEntity();
 		getRemoteTileEntity();
 	}
-	private IInventory getRemoteTileEntity() {
+	protected IInventory getRemoteTileEntity() {
 		if(rx!=0||ry!=0||rz!=0) {
 			TileEntity thing = worldObj.getTileEntity(rx, ry, rz);
 			if(!(thing instanceof IInventory)) {

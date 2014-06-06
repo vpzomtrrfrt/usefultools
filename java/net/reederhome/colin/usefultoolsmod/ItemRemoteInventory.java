@@ -14,6 +14,8 @@ public class ItemRemoteInventory extends Item {
 
 	public ItemRemoteInventory() {
 		setMaxStackSize(1);
+		setUnlocalizedName("itemRemoteInventory");
+		setTextureName(UsefulToolsMod.MODID+":remoteInventory");
 	}
 	
 	@Override

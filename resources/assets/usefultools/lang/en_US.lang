@@ -1,2 +1,4 @@
 tile.autoClicker.name=Redstone Activator
 tile.obsidiPlate.name=Obsidian Pressure Plate
+tile.blockRemoteInventory.name=Remote Inventory
+item.itemRemoteInventory.name=Remote Inventory
