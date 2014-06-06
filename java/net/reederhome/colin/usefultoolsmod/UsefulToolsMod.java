@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.reederhome.colin.usefultoolsmod.client.UsefulToolsClient;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -21,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.2";
+	public static final String VERSION = "0.3pre";
 	
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();
@@ -34,8 +35,9 @@ public class UsefulToolsMod {
 		GameRegistry.registerBlock(glowstoneCrops, "glowstoneCrops");
 		MinecraftForge.EVENT_BUS.register(this);
 		
-		GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
+		//GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
 		GameRegistry.addRecipe(new ItemStack(obsidiPlate), "oo", 'o', Blocks.obsidian);
+		GameRegistry.addRecipe(new ShapedOreRecipe(autoClicker, "www", "wrw", "rpr", 'w', "plankWood", 'r', "blockCobble", 'p', Items.redstone));
 	}
 	
 	private int registerEntity(Class cl, String name) {
