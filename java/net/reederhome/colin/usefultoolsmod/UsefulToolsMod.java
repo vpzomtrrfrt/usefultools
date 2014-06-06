@@ -3,6 +3,7 @@ package net.reederhome.colin.usefultoolsmod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -27,12 +28,18 @@ public class UsefulToolsMod {
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();
 	static Block glowstoneCrops = new BlockGlowstoneCrops();
+	static Block remoteInventory = new BlockRemoteInventory();
+	
+	static Item itemRemoteInventory = new ItemRemoteInventory();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent ev) {
 		GameRegistry.registerBlock(autoClicker, "autoClicker");
 		GameRegistry.registerBlock(obsidiPlate, "obsidiPlate");
 		GameRegistry.registerBlock(glowstoneCrops, "glowstoneCrops");
+		GameRegistry.registerBlock(remoteInventory, "blockRemoteInventory");
+		GameRegistry.registerItem(itemRemoteInventory, "itemRemoteInventory");
+		GameRegistry.registerTileEntity(TileEntityRemoteInventory.class, "remoteInventory");
 		MinecraftForge.EVENT_BUS.register(this);
 		
 		//GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
