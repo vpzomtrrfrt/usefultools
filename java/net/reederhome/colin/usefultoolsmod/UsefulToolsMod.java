@@ -23,13 +23,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.4";
+	public static final String VERSION = "0.5.0";
 	
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();
 	static Block glowstoneCrops = new BlockGlowstoneCrops();
 	static Block remoteInventory = new BlockRemoteInventory();
 	static Block asteriskChest = new BlockAsteriskChest();
+	static Block cobbleGen = new BlockCobblegen().setBlockTextureName(MODID+":cobbleGen").setBlockName("cobbleGen");
+	static Block digitalCabinet = new BlockDigitalCabinet();
 	
 	static Item itemRemoteInventory = new ItemRemoteInventory();
 	
@@ -40,17 +42,24 @@ public class UsefulToolsMod {
 		GameRegistry.registerBlock(glowstoneCrops, "glowstoneCrops");
 		GameRegistry.registerBlock(remoteInventory, "blockRemoteInventory");
 		GameRegistry.registerBlock(asteriskChest, "asteriskChest");
+		GameRegistry.registerBlock(cobbleGen, "cobbleGen");
+		GameRegistry.registerBlock(digitalCabinet, "digitalCabinet");
 		
-		GameRegistry.registerItem(itemRemoteInventory, "itemRemoteInventory");
+		GameRegistry.registerItem(itemRemoteInventory, "remoteInventory");
 		
 		GameRegistry.registerTileEntity(TileEntityRemoteInventory.class, "remoteInventory");
 		GameRegistry.registerTileEntity(TileEntityAsteriskChest.class, "asteriskChest");
+		GameRegistry.registerTileEntity(TileEntityCobblegen.class, "cobbleGen");
+		GameRegistry.registerTileEntity(TileEntityDigitalCabinet.class, "digitalCabinet");
 		MinecraftForge.EVENT_BUS.register(this);
 		
 		//GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
 		GameRegistry.addRecipe(new ItemStack(obsidiPlate), "oo", 'o', Blocks.obsidian);
 		GameRegistry.addRecipe(new ShapedOreRecipe(autoClicker, "www", "wrw", "rpr", 'w', "plankWood", 'r', Blocks.cobblestone, 'p', Items.redstone));
 		GameRegistry.addRecipe(new ShapedOreRecipe(itemRemoteInventory, "wiw", "wew", "wiw", 'w', "plankWood", 'i', "ingotIron", 'e', Items.ender_pearl));
+		GameRegistry.addRecipe(new ShapedOreRecipe(asteriskChest, "cwg", "ghg", "gwc", 'c', Blocks.cobblestone, 'w', "plankWood", 'g', Items.gold_nugget, 'h', Blocks.chest));
+		GameRegistry.addRecipe(new ShapedOreRecipe(cobbleGen, "ccc", "wrl", "ccc", 'c', Blocks.cobblestone, 'w', Items.water_bucket, 'r', Items.redstone, 'l', Items.lava_bucket));
+		GameRegistry.addRecipe(new ShapedOreRecipe(digitalCabinet, "www", "wcw", "www", 'w', "plankWood", 'c', Blocks.chest));
 	}
 	
 	private int registerEntity(Class cl, String name) {

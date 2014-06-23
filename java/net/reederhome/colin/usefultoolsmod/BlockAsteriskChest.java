@@ -1,18 +1,16 @@
 package net.reederhome.colin.usefultoolsmod;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class BlockAsteriskChest extends Block implements ITileEntityProvider {
+public class BlockAsteriskChest extends BlockContainer {
 
 	public BlockAsteriskChest() {
 		super(Material.wood);
