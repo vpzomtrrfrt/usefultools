@@ -1,5 +1,7 @@
 package net.reederhome.colin.usefultoolsmod;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -14,10 +16,17 @@ public class BlockCobblegen extends Block implements ITileEntityProvider {
 	
 	protected BlockCobblegen() {
 		super(Material.rock);
+		setHardness(10);
+		setHarvestLevel("pickaxe", 0, 0);
+	}
+	
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		return Item.getItemFromBlock(this);
 	}
 
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
 		player.inventory.addItemStackToInventory(new ItemStack(Blocks.cobblestone,1));
+		super.onBlockClicked(world, x, y, z, player);
 	}
 	
 	@Override

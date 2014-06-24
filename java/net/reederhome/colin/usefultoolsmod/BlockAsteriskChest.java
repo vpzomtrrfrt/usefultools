@@ -1,10 +1,13 @@
 package net.reederhome.colin.usefultoolsmod;
 
+import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
@@ -16,6 +19,10 @@ public class BlockAsteriskChest extends BlockContainer {
 		super(Material.wood);
 		setBlockTextureName(UsefulToolsMod.MODID+":asteriskChest");
 		setBlockName("asteriskChest");
+	}
+	
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		return Item.getItemFromBlock(this);
 	}
 	
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {

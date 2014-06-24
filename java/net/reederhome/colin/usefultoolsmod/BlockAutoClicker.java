@@ -1,5 +1,7 @@
 package net.reederhome.colin.usefultoolsmod;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
@@ -9,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
@@ -28,6 +31,9 @@ public class BlockAutoClicker extends Block {
 		super(Material.rock);
 		setBlockName("autoClicker");
 		setCreativeTab(CreativeTabs.tabRedstone);
+	}
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		return Item.getItemFromBlock(this);
 	}
 	public void onBlockPlacedBy(World world, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
 		int var7 = BlockPistonBase.determineOrientation(world, p_149689_2_, p_149689_3_, p_149689_4_, p_149689_5_);
