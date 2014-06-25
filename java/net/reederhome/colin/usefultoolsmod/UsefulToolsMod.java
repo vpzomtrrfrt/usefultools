@@ -1,11 +1,17 @@
 package net.reederhome.colin.usefultoolsmod;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.reederhome.colin.usefultoolsmod.client.UsefulToolsClient;
@@ -35,6 +41,7 @@ public class UsefulToolsMod {
 	
 	static Item itemRemoteInventory = new ItemRemoteInventory();
 	static Item blockSucker = new ItemBlockSucker();
+	static Item entitySucker= new ItemEntitySucker();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent ev) {
@@ -48,6 +55,7 @@ public class UsefulToolsMod {
 		
 		GameRegistry.registerItem(itemRemoteInventory, "remoteInventory");
 		GameRegistry.registerItem(blockSucker, "blockSucker");
+		GameRegistry.registerItem(entitySucker, "entitySucker");
 		
 		GameRegistry.registerTileEntity(TileEntityRemoteInventory.class, "remoteInventory");
 		GameRegistry.registerTileEntity(TileEntityAsteriskChest.class, "asteriskChest");
@@ -84,6 +92,25 @@ public class UsefulToolsMod {
 			if(stack.getItem().equals(Items.glowstone_dust)&&ev.entity.worldObj.getBlock(ev.x, ev.y, ev.z).equals(Blocks.farmland)) {
 				ev.entity.worldObj.setBlock(ev.x, ev.y+1, ev.z, glowstoneCrops);
 				stack.stackSize--;
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onEntityInteract(EntityInteractEvent ev) {
+		ItemStack stack = ev.entityLiving.getHeldItem();
+		if(stack!=null) {
+			if(stack.getItem().equals(entitySucker)) {
+				if(ev.target!=null && !(ev.target instanceof EntityPlayer) && !stack.hasTagCompound()) {
+					NBTTagCompound tag = new NBTTagCompound();
+					NBTTagCompound et  = new NBTTagCompound();
+					ev.target.writeToNBT(et);
+					tag.setTag("Entity", et);
+					tag.setInteger("EntityId", EntityList.getEntityID(ev.target));
+					stack.setTagCompound(tag);
+					ev.target.worldObj.removeEntity(ev.target);
+					stack.getItem().addInformation(stack, ev.entityPlayer, new ArrayList(), false);
+				}
 			}
 		}
 	}

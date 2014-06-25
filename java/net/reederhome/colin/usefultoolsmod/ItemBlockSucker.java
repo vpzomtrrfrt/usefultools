@@ -24,16 +24,17 @@ public class ItemBlockSucker extends Item {
 	public ItemBlockSucker() {
 		super();
 		setMaxStackSize(1);
-		setMaxDamage(0);
+		setUnlocalizedName("blockSucker");
 	}
 	
-	public IIcon getIconFromDamage(int meta) {
-		return meta>0?iconFull:iconEmpty;
+	public IIcon getIconIndex(ItemStack stack) {
+		return stack.hasTagCompound()?iconFull:iconEmpty;
 	}
 	
 	public void registerIcons(IIconRegister ir) {
 		iconEmpty = ir.registerIcon(UsefulToolsMod.MODID+":blockSuckerEmpty");
 		iconFull  = ir.registerIcon(UsefulToolsMod.MODID+":blockSuckerFull");
+		this.itemIcon=iconEmpty;
 	}
 	
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
@@ -41,11 +42,7 @@ public class ItemBlockSucker extends Item {
 			NBTTagCompound tag = par1ItemStack.stackTagCompound;
 			Block block = Block.getBlockById(tag.getInteger("BlockId"));
 			int meta = tag.getInteger("BlockData");
-			par3List.add(I18n.format(Item.getItemFromBlock(block).getUnlocalizedName(new ItemStack(block, 1, meta))));
-			par1ItemStack.setItemDamage(1);
-		}
-		else {
-			par1ItemStack.setItemDamage(0);
+			par3List.add(I18n.format((Item.getItemFromBlock(block).getUnlocalizedName(new ItemStack(block, 1, meta)))+".name"));
 		}
 	}
 	
@@ -123,7 +120,6 @@ public class ItemBlockSucker extends Item {
 
 	                par3World.playSoundEffect((double)((float)par4 + 0.5F), (double)((float)par5 + 0.5F), (double)((float)par6 + 0.5F), field_150939_a.stepSound.func_150496_b(), (field_150939_a.stepSound.getPitch() + 1.0F) / 2.0F, field_150939_a.stepSound.getVolume() * 0.8F);
 	                par1ItemStack.stackTagCompound=null;
-	                par1ItemStack.setItemDamage(0);
 	            }
 
 	            return true;
@@ -133,7 +129,7 @@ public class ItemBlockSucker extends Item {
 	            return false;
 	        }
 		}
-		else {
+		else if(!par1ItemStack.hasTagCompound()) {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setInteger("BlockId", Block.getIdFromBlock(par3World.getBlock(par4, par5, par6)));
 			tag.setInteger("BlockData", par3World.getBlockMetadata(par4, par5, par6));
@@ -146,8 +142,8 @@ public class ItemBlockSucker extends Item {
 			par1ItemStack.setTagCompound(tag);
 			par3World.removeTileEntity(par4, par5, par6);
 			par3World.setBlock(par4, par5, par6, Blocks.air, 0, 3);
-			par1ItemStack.setItemDamage(1);
 			return true;
 		}
+		return false;
 	}
 }

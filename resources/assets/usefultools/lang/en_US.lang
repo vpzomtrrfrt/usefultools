@@ -6,3 +6,5 @@ tile.cobbleGen.name=Cobblestone Generator
 tile.digitalCabinet.name=Digital Cabinet
 
 item.itemRemoteInventory.name=Remote Inventory
+item.blockSucker.name=Block Sucker
+item.entitySucker.name=Entity Sucker
