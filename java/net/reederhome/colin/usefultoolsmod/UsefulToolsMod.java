@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.6.0";
+	public static final String VERSION = "0.6.1";
 	
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();
@@ -70,6 +70,8 @@ public class UsefulToolsMod {
 		GameRegistry.addRecipe(new ShapedOreRecipe(asteriskChest, "cwg", "ghg", "gwc", 'c', Blocks.cobblestone, 'w', "plankWood", 'g', Items.gold_nugget, 'h', Blocks.chest));
 		GameRegistry.addRecipe(new ShapedOreRecipe(cobbleGen, "ccc", "wrl", "ccc", 'c', Blocks.cobblestone, 'w', Items.water_bucket, 'r', Items.redstone, 'l', Items.lava_bucket));
 		GameRegistry.addRecipe(new ShapedOreRecipe(digitalCabinet, "www", "wcw", "www", 'w', "plankWood", 'c', Blocks.chest));
+		GameRegistry.addRecipe(new ShapedOreRecipe(blockSucker, " s ", " rs", "lsl", 's', "stickWood", 'r', Items.redstone, 'l', Blocks.lapis_block));
+		GameRegistry.addRecipe(new ItemStack(entitySucker), " r ", "rsr", " r ", 's', blockSucker, 'r', Items.redstone);
 	}
 	
 	private int registerEntity(Class cl, String name) {
