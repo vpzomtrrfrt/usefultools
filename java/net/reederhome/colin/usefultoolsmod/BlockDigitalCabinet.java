@@ -27,12 +27,14 @@ public class BlockDigitalCabinet extends BlockContainer {
 	
 	public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
 		TileEntityDigitalCabinet te = (TileEntityDigitalCabinet) world.getTileEntity(x, y, z);
-		for(int i = 0; i < te.inv.length; i++) {
-			if(te.inv[i]!=null) {
-				EntityItem it = new EntityItem(world);
-				it.setEntityItemStack(te.inv[i]);
-				it.setLocationAndAngles(x, y, z, 0, 0);
-				world.spawnEntityInWorld(it);
+		if(te!=null) {
+			for(int i = 0; i < te.inv.length; i++) {
+				if(te.inv[i]!=null) {
+					EntityItem it = new EntityItem(world);
+					it.setEntityItemStack(te.inv[i]);
+					it.setLocationAndAngles(x, y, z, 0, 0);
+					world.spawnEntityInWorld(it);
+				}
 			}
 		}
 		super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);

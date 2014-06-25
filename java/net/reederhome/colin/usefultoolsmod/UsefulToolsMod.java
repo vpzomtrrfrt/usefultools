@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.5.1";
+	public static final String VERSION = "0.6.0pre";
 	
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();
@@ -34,6 +34,7 @@ public class UsefulToolsMod {
 	static Block digitalCabinet = new BlockDigitalCabinet();
 	
 	static Item itemRemoteInventory = new ItemRemoteInventory();
+	static Item blockSucker = new ItemBlockSucker();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent ev) {
@@ -46,6 +47,7 @@ public class UsefulToolsMod {
 		GameRegistry.registerBlock(digitalCabinet, "digitalCabinet");
 		
 		GameRegistry.registerItem(itemRemoteInventory, "remoteInventory");
+		GameRegistry.registerItem(blockSucker, "blockSucker");
 		
 		GameRegistry.registerTileEntity(TileEntityRemoteInventory.class, "remoteInventory");
 		GameRegistry.registerTileEntity(TileEntityAsteriskChest.class, "asteriskChest");
