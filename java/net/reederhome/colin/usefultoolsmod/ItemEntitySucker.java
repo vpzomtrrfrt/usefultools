@@ -35,21 +35,30 @@ public class ItemEntitySucker extends Item {
 		this.itemIcon=iconEmpty;
 	}
 	
+	public void updateName(ItemStack par1ItemStack) {
+		if(par1ItemStack.hasTagCompound()) {
+			NBTTagCompound tag = par1ItemStack.stackTagCompound;
+			if(tag.hasKey("Entity")) {
+				if(par1ItemStack.hasDisplayName()) {
+					tag.getCompoundTag("Entity").setString("CustomName", par1ItemStack.getDisplayName());
+					tag.getCompoundTag("Entity").setBoolean("CustomNameVisible", true);
+				}
+				String name = tag.getCompoundTag("Entity").getString("CustomName");
+				if(name!=null&&!name.equals("")) par1ItemStack.setStackDisplayName(name);
+			}
+		}
+	}
+	
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		if(par1ItemStack.hasTagCompound()&&par1ItemStack.stackTagCompound.hasKey("EntityId")) {
+			updateName(par1ItemStack);
 			NBTTagCompound tag = par1ItemStack.stackTagCompound;
-			if(par1ItemStack.hasDisplayName()) {
-				tag.getCompoundTag("Entity").setString("CustomName", par1ItemStack.getDisplayName());
-				tag.getCompoundTag("Entity").setBoolean("CustomNameVisible", true);
-			}
-			String name = tag.getCompoundTag("Entity").getString("CustomName");
-			if(name!=null&&!name.equals("")) par1ItemStack.setStackDisplayName(name);
 			par3List.add(I18n.format("entity."+EntityList.getStringFromID(tag.getInteger("EntityId"))+".name"));
 		}
 	}
 	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		addInformation(par1ItemStack, par2EntityPlayer, new ArrayList(), false);
+		updateName(par1ItemStack);
 		if(!par3World.isRemote) {
 			if(par1ItemStack.hasTagCompound()&&par1ItemStack.stackTagCompound.hasKey("Entity")) {
 				par4 += Facing.offsetsXForSide[par7];
