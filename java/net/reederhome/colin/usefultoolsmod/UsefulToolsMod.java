@@ -1,8 +1,7 @@
 package net.reederhome.colin.usefultoolsmod;
 
-import java.util.ArrayList;
-
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -15,11 +14,13 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.reederhome.colin.usefultoolsmod.client.UsefulToolsClient;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -62,6 +63,7 @@ public class UsefulToolsMod {
 		GameRegistry.registerTileEntity(TileEntityCobblegen.class, "cobbleGen");
 		GameRegistry.registerTileEntity(TileEntityDigitalCabinet.class, "digitalCabinet");
 		MinecraftForge.EVENT_BUS.register(this);
+		FMLCommonHandler.instance().bus().register(this);
 		
 		//GameRegistry.addRecipe(new ItemStack(autoClicker), "www", "wrw", "rpr", 'w', Blocks.planks, 'r', Blocks.cobblestone, 'p', Items.redstone);
 		GameRegistry.addRecipe(new ItemStack(obsidiPlate), "oo", 'o', Blocks.obsidian);
@@ -84,7 +86,21 @@ public class UsefulToolsMod {
 	@EventHandler
 	@SideOnly(Side.CLIENT)
 	public void clientInit(FMLInitializationEvent ev) {
-		UsefulToolsClient.registerRenderers();
+		UsefulToolsClient.registerClientThings();
+	}
+	
+	@SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onKeyInput(KeyInputEvent ev) {
+		if(UsefulToolsClient.flightKey.isPressed()) {
+			if(Minecraft.getMinecraft().thePlayer.capabilities.allowFlying) {
+				Minecraft.getMinecraft().thePlayer.capabilities.isFlying=true;
+				Minecraft.getMinecraft().thePlayer.sendPlayerAbilities();
+				if(Minecraft.getMinecraft().thePlayer.onGround) {
+					Minecraft.getMinecraft().thePlayer.jump();
+				}
+			}
+		}
 	}
 	
 	@SubscribeEvent

@@ -1,12 +1,15 @@
 package net.reederhome.colin.usefultoolsmod.client;
 
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.entity.RenderBiped;
-import cpw.mods.fml.client.registry.RenderingRegistry;
+import org.lwjgl.input.Keyboard;
+
+import cpw.mods.fml.client.registry.ClientRegistry;
+import net.minecraft.client.settings.KeyBinding;
 
 public class UsefulToolsClient {
 
-	public static void registerRenderers() {
-		
+	public static KeyBinding flightKey = new KeyBinding("flight", Keyboard.KEY_F4, "key.categories.movement");
+	
+	public static void registerClientThings() {
+		ClientRegistry.registerKeyBinding(flightKey);
 	}
 }
