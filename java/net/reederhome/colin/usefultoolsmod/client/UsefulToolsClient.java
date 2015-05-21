@@ -7,7 +7,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 public class UsefulToolsClient {
 
-	public static KeyBinding flightKey = new KeyBinding("flight", Keyboard.KEY_F4, "key.categories.movement");
+	public static KeyBinding flightKey = new KeyBinding("key.flight", Keyboard.KEY_F4, "key.categories.movement");
 	
 	public static void registerClientThings() {
 		ClientRegistry.registerKeyBinding(flightKey);
