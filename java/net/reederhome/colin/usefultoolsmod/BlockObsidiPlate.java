@@ -13,6 +13,7 @@ public class BlockObsidiPlate extends BlockPressurePlate {
 		setBlockName("obsidiPlate");
 		setHardness(5);
 		setHarvestLevel("pickaxe", 0, 0);
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public Item getItemDropped(int metadata, Random random, int fortune) {

@@ -2,6 +2,7 @@ package net.reederhome.colin.usefultoolsmod;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -30,7 +31,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.6.2";
+	public static final String VERSION = "0.7.0pre";
+	
+	static CreativeTabs tab = new CreativeTabs("usefultools") {
+		
+		@Override
+		public Item getTabIconItem() {
+			return Item.getItemFromBlock(digitalCabinet);
+		}
+	};
 	
 	static Block autoClicker = new BlockAutoClicker();
 	static Block obsidiPlate = new BlockObsidiPlate();

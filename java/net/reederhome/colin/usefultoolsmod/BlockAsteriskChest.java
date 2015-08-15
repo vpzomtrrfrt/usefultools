@@ -19,6 +19,7 @@ public class BlockAsteriskChest extends BlockContainer {
 		super(Material.wood);
 		setBlockTextureName(UsefulToolsMod.MODID+":asteriskChest");
 		setBlockName("asteriskChest");
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public Item getItemDropped(int metadata, Random random, int fortune) {

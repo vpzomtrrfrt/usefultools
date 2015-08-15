@@ -18,6 +18,7 @@ public class BlockCobblegen extends Block implements ITileEntityProvider {
 		super(Material.rock);
 		setHardness(10);
 		setHarvestLevel("pickaxe", 0, 0);
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public Item getItemDropped(int metadata, Random random, int fortune) {

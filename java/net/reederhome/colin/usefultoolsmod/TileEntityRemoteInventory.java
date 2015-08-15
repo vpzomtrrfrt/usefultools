@@ -1,13 +1,13 @@
 package net.reederhome.colin.usefultoolsmod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.reederhome.colin.usefultoolsmod.UsefulToolsMod;
 
 
-public class TileEntityRemoteInventory extends TileEntity implements IInventory {
+public class TileEntityRemoteInventory extends TileEntity implements ISidedInventory {
 
 	int rx, ry, rz;
 	public void updateEntity() {
@@ -127,5 +127,29 @@ public class TileEntityRemoteInventory extends TileEntity implements IInventory 
 	public void writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		tag.setIntArray("Remote", new int[]{rx,ry,rz});
+	}
+	@Override
+	public boolean canExtractItem(int arg0, ItemStack arg1, int arg2) {
+		IInventory i = getRemoteTileEntity();
+		return (i instanceof ISidedInventory)?(((ISidedInventory)i).canExtractItem(arg0, arg1, arg2)):true;
+	}
+	@Override
+	public boolean canInsertItem(int arg0, ItemStack arg1, int arg2) {
+		IInventory i = getRemoteTileEntity();
+		return (i instanceof ISidedInventory)?(((ISidedInventory)i).canInsertItem(arg0, arg1, arg2)):true;
+	}
+	@Override
+	public int[] getAccessibleSlotsFromSide(int arg0) {
+		IInventory i = getRemoteTileEntity();
+		if(i instanceof ISidedInventory) {
+			return ((ISidedInventory)i).getAccessibleSlotsFromSide(arg0);
+		}
+		else {
+			int[] tr = new int[i.getSizeInventory()];
+			for(int j = 0; j < i.getSizeInventory(); j++) {
+				tr[j]=j;
+			}
+			return tr;
+		}
 	}
 }

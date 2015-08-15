@@ -3,7 +3,6 @@ package net.reederhome.colin.usefultoolsmod;
 import java.util.List;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.resources.I18n;
@@ -25,6 +24,7 @@ public class ItemBlockSucker extends Item {
 		super();
 		setMaxStackSize(1);
 		setUnlocalizedName("blockSucker");
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public IIcon getIconIndex(ItemStack stack) {

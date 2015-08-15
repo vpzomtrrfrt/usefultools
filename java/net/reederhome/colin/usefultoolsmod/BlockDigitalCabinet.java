@@ -19,6 +19,7 @@ public class BlockDigitalCabinet extends BlockContainer {
 		setBlockTextureName(UsefulToolsMod.MODID+":digitalCabinet");
 		setHardness(12);
 		setHarvestLevel("axe", 0, 1);
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public Item getItemDropped(int metadata, Random random, int fortune) {

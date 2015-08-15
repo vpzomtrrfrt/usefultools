@@ -23,6 +23,7 @@ public class ItemEntitySucker extends Item {
 		super();
 		setMaxStackSize(1);
 		setUnlocalizedName("entitySucker");
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	
 	public IIcon getIconIndex(ItemStack stack) {

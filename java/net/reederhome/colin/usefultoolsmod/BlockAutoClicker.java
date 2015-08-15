@@ -30,7 +30,7 @@ public class BlockAutoClicker extends Block {
 	public BlockAutoClicker() {
 		super(Material.rock);
 		setBlockName("autoClicker");
-		setCreativeTab(CreativeTabs.tabRedstone);
+		setCreativeTab(UsefulToolsMod.tab);
 	}
 	public Item getItemDropped(int metadata, Random random, int fortune) {
 		return Item.getItemFromBlock(this);
