@@ -9,6 +9,7 @@ public class BlockGlowstoneCrops extends BlockCrops {
 	public BlockGlowstoneCrops() {
 		super();
 		this.setBlockTextureName(UsefulToolsMod.MODID+":glowstoneCrops");
+		setBlockName("glowstoneCrops");
 	}
 	
 	public Item func_149866_i()

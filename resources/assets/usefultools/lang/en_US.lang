@@ -4,9 +4,13 @@ tile.blockRemoteInventory.name=Remote Inventory
 tile.asteriskChest.name=Asterisk Chest
 tile.cobbleGen.name=Cobblestone Generator
 tile.digitalCabinet.name=Digital Cabinet
+tile.glowstoneCrops.name=Glowstone
+tile.playerInterface.name=Player Interface
 
 item.itemRemoteInventory.name=Remote Inventory
 item.blockSucker.name=Block Sucker
 item.entitySucker.name=Entity Sucker
 
 key.flight=Flight
+
+itemGroup.usefultools=Useful Tools

@@ -48,6 +48,7 @@ public class UsefulToolsMod {
 	static Block asteriskChest = new BlockAsteriskChest();
 	static Block cobbleGen = new BlockCobblegen().setBlockTextureName(MODID+":cobbleGen").setBlockName("cobbleGen");
 	static Block digitalCabinet = new BlockDigitalCabinet();
+	static Block playerInterface = new BlockPlayerInterface();
 	
 	static Item itemRemoteInventory = new ItemRemoteInventory();
 	static Item blockSucker = new ItemBlockSucker();
@@ -62,6 +63,7 @@ public class UsefulToolsMod {
 		GameRegistry.registerBlock(asteriskChest, "asteriskChest");
 		GameRegistry.registerBlock(cobbleGen, "cobbleGen");
 		GameRegistry.registerBlock(digitalCabinet, "digitalCabinet");
+		GameRegistry.registerBlock(playerInterface, "playerInterface");
 		
 		GameRegistry.registerItem(itemRemoteInventory, "remoteInventory");
 		GameRegistry.registerItem(blockSucker, "blockSucker");
@@ -71,6 +73,7 @@ public class UsefulToolsMod {
 		GameRegistry.registerTileEntity(TileEntityAsteriskChest.class, "asteriskChest");
 		GameRegistry.registerTileEntity(TileEntityCobblegen.class, "cobbleGen");
 		GameRegistry.registerTileEntity(TileEntityDigitalCabinet.class, "digitalCabinet");
+		GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, "PlayerInterface");
 		MinecraftForge.EVENT_BUS.register(this);
 		FMLCommonHandler.instance().bus().register(this);
 		
@@ -83,6 +86,7 @@ public class UsefulToolsMod {
 		GameRegistry.addRecipe(new ShapedOreRecipe(digitalCabinet, "www", "wcw", "www", 'w', "plankWood", 'c', Blocks.chest));
 		GameRegistry.addRecipe(new ShapedOreRecipe(blockSucker, " s ", " rs", "lsl", 's', "stickWood", 'r', Items.redstone, 'l', Blocks.lapis_block));
 		GameRegistry.addRecipe(new ItemStack(entitySucker), " r ", "rsr", " r ", 's', blockSucker, 'r', Items.redstone);
+		GameRegistry.addShapelessRecipe(new ItemStack(playerInterface), itemRemoteInventory, Items.rotten_flesh);
 	}
 	
 	private int registerEntity(Class cl, String name) {
