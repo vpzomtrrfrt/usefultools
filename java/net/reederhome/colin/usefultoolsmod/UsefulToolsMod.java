@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.7.0pre";
+	public static final String VERSION = "0.7.0";
 	
 	static CreativeTabs tab = new CreativeTabs("usefultools") {
 		
