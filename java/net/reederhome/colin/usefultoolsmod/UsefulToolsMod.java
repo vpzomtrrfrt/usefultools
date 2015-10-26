@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UsefulToolsMod {
 
 	public static final String MODID = "usefultools";
-	public static final String VERSION = "0.7.0";
+	public static final String VERSION = "0.8.1";
 	
 	static CreativeTabs tab = new CreativeTabs("usefultools") {
 		
@@ -88,6 +88,7 @@ public class UsefulToolsMod {
 		GameRegistry.addRecipe(new ShapedOreRecipe(digitalCabinet, "www", "wcw", "www", 'w', "plankWood", 'c', Blocks.chest));
 		GameRegistry.addRecipe(new ShapedOreRecipe(blockSucker, " s ", " rs", "lsl", 's', "stickWood", 'r', Items.redstone, 'l', Blocks.lapis_block));
 		GameRegistry.addRecipe(new ItemStack(entitySucker), " r ", "rsr", " r ", 's', blockSucker, 'r', Items.redstone);
+		GameRegistry.addRecipe(new ShapedOreRecipe(clickSpreader, "crc", "ara", "cac", 'c', Blocks.cobblestone, 'r', "dustRedstone", 'a', autoClicker));
 		GameRegistry.addShapelessRecipe(new ItemStack(playerInterface), itemRemoteInventory, Items.rotten_flesh);
 	}
 	
