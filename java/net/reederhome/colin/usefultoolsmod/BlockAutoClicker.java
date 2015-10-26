@@ -86,7 +86,7 @@ public class BlockAutoClicker extends Block {
 
 		ChunkCoordinates coords;
 		private AutoClickerPlayer(World p_i45324_1_, ChunkCoordinates cc) {
-			super(p_i45324_1_, new GameProfile("FAKEPLAYER_NAME", "FAKEPLAYER_NAME"));
+			super(p_i45324_1_, new GameProfile(null, "FAKEPLAYER_NAME"));
 			coords=cc;
 		}
 

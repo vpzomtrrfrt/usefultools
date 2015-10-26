@@ -6,6 +6,7 @@ tile.cobbleGen.name=Cobblestone Generator
 tile.digitalCabinet.name=Digital Cabinet
 tile.glowstoneCrops.name=Glowstone
 tile.playerInterface.name=Player Interface
+tile.clickSpreader.name=Click Spreader
 
 item.itemRemoteInventory.name=Remote Inventory
 item.blockSucker.name=Block Sucker

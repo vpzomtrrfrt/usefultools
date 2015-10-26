@@ -49,6 +49,7 @@ public class UsefulToolsMod {
 	static Block cobbleGen = new BlockCobblegen().setBlockTextureName(MODID+":cobbleGen").setBlockName("cobbleGen");
 	static Block digitalCabinet = new BlockDigitalCabinet();
 	static Block playerInterface = new BlockPlayerInterface();
+	static Block clickSpreader = new BlockClickSpreader();
 	
 	static Item itemRemoteInventory = new ItemRemoteInventory();
 	static Item blockSucker = new ItemBlockSucker();
@@ -64,6 +65,7 @@ public class UsefulToolsMod {
 		GameRegistry.registerBlock(cobbleGen, "cobbleGen");
 		GameRegistry.registerBlock(digitalCabinet, "digitalCabinet");
 		GameRegistry.registerBlock(playerInterface, "playerInterface");
+		GameRegistry.registerBlock(clickSpreader, "clickSpreader");
 		
 		GameRegistry.registerItem(itemRemoteInventory, "remoteInventory");
 		GameRegistry.registerItem(blockSucker, "blockSucker");
