@@ -1,53 +1,54 @@
-package usefultoolsmod;
+package net.reederhome.colin.usefultoolsmod;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 
-public class TileEntityCobblegen extends TileEntity implements IInventory {
+public class TileEntityPlayerInterface extends TileEntity implements IInventory {
+
+    String name = null;
+
+    private IInventory getInv() {
+        if(name!=null) {
+            EntityPlayer p = worldObj.getPlayerEntityByName(name);
+            if(p!=null) {
+                return p.inventory;
+            }
+        }
+        return new EmptyInventory();
+    }
 
     @Override
     public int getSizeInventory() {
-        return 1;
+        return getInv().getSizeInventory();
     }
 
     @Override
     public ItemStack getStackInSlot(int i) {
-        if(i == 0) {
-            return new ItemStack(Blocks.cobblestone, 64);
-        }
-        else {
-            return null;
-        }
+        return getInv().getStackInSlot(i);
     }
 
     @Override
     public ItemStack decrStackSize(int i, int i1) {
-        if(i == 0) {
-            return new ItemStack(Blocks.cobblestone, i1);
-        }
-        else {
-            return null;
-        }
+        return getInv().decrStackSize(i, i1);
     }
 
     @Override
     public ItemStack removeStackFromSlot(int i) {
-        return getStackInSlot(i);
+        return getInv().removeStackFromSlot(i);
     }
 
     @Override
     public void setInventorySlotContents(int i, ItemStack itemStack) {
-
+        getInv().setInventorySlotContents(i, itemStack);
     }
 
     @Override
     public int getInventoryStackLimit() {
-        return 64;
+        return getInv().getInventoryStackLimit();
     }
 
     @Override
@@ -67,32 +68,32 @@ public class TileEntityCobblegen extends TileEntity implements IInventory {
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemStack) {
-        return false;
+        return getInv().isItemValidForSlot(i, itemStack);
     }
 
     @Override
     public int getField(int i) {
-        return 0;
+        return getInv().getField(i);
     }
 
     @Override
     public void setField(int i, int i1) {
-
+        getInv().setField(i, i1);
     }
 
     @Override
     public int getFieldCount() {
-        return 0;
+        return getInv().getFieldCount();
     }
 
     @Override
     public void clear() {
-
+        getInv().clear();
     }
 
     @Override
     public String getName() {
-        return "Cobblestone Generator";
+        return getInv().getName();
     }
 
     @Override
@@ -102,6 +103,18 @@ public class TileEntityCobblegen extends TileEntity implements IInventory {
 
     @Override
     public IChatComponent getDisplayName() {
-        return new ChatComponentText(getName());
+        return getInv().getDisplayName();
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound tag) {
+        super.readFromNBT(tag);
+        name = tag.getString("Owner");
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound tag) {
+        super.writeToNBT(tag);
+        tag.setString("Owner", name);
     }
 }

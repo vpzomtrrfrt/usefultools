@@ -1,10 +1,10 @@
-package usefultoolsmod.client;
+package net.reederhome.colin.usefultoolsmod.client;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import usefultoolsmod.UsefulToolsMod;
+import net.reederhome.colin.usefultoolsmod.UsefulToolsMod;
 
 public class UsefulToolsClient {
     public static void registerClientThings() {

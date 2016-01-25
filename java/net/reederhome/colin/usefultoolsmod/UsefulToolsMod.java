@@ -1,4 +1,4 @@
-package usefultoolsmod;
+package net.reederhome.colin.usefultoolsmod;
 
 import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.Mod;
@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import usefultoolsmod.client.UsefulToolsClient;
+import net.reederhome.colin.usefultoolsmod.client.UsefulToolsClient;
 
 @Mod(modid=UsefulToolsMod.MODID,name="Useful Tools")
 public class UsefulToolsMod {

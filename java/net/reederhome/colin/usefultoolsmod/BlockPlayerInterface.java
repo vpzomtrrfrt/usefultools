@@ -1,4 +1,4 @@
-package usefultoolsmod;
+package net.reederhome.colin.usefultoolsmod;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockPlayerInterface extends BlockContainer {
 
