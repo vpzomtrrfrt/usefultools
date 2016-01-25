@@ -9,6 +9,7 @@ import usefultoolsmod.UsefulToolsMod;
 public class UsefulToolsClient {
     public static void registerClientThings() {
         registerBlock(UsefulToolsMod.blockPlayerInterface, UsefulToolsMod.blockPlayerInterface.NAME);
+        registerBlock(UsefulToolsMod.blockCobblegen, UsefulToolsMod.blockCobblegen.NAME);
     }
 
     private static void registerBlock(Block block, String name) {

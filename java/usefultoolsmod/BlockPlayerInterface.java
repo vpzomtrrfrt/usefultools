@@ -21,7 +21,6 @@ public class BlockPlayerInterface extends BlockContainer {
 
     public BlockPlayerInterface() {
         super(Material.rock);
-        GameRegistry.registerBlock(this, NAME);
         setHardness(2);
         setUnlocalizedName(NAME);
     }
