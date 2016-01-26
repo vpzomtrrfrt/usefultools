@@ -10,6 +10,8 @@ public class UsefulToolsClient {
     public static void registerClientThings() {
         registerBlock(UsefulToolsMod.blockPlayerInterface, UsefulToolsMod.blockPlayerInterface.NAME);
         registerBlock(UsefulToolsMod.blockCobblegen, UsefulToolsMod.blockCobblegen.NAME);
+        registerBlock(UsefulToolsMod.blockRemoteInventory, UsefulToolsMod.blockRemoteInventory.NAME);
+        registerItem(UsefulToolsMod.itemRemoteInventory, UsefulToolsMod.itemRemoteInventory.NAME);
     }
 
     private static void registerBlock(Block block, String name) {
