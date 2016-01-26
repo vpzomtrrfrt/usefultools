@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"powered=false": {"model": "usefultools:obsidiPlate_up"},
+		"powered=true": {"model": "usefultools:obsidiPlate_down"}
+	}
+}

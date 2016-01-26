@@ -11,6 +11,7 @@ public class UsefulToolsClient {
         registerBlock(UsefulToolsMod.blockPlayerInterface, UsefulToolsMod.blockPlayerInterface.NAME);
         registerBlock(UsefulToolsMod.blockCobblegen, UsefulToolsMod.blockCobblegen.NAME);
         registerBlock(UsefulToolsMod.blockRemoteInventory, UsefulToolsMod.blockRemoteInventory.NAME);
+        registerBlock(UsefulToolsMod.blockObsidiPlate, UsefulToolsMod.blockObsidiPlate.NAME);
         registerItem(UsefulToolsMod.itemRemoteInventory, UsefulToolsMod.itemRemoteInventory.NAME);
     }
 
