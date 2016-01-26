@@ -17,18 +17,18 @@ import net.reederhome.colin.usefultoolsmod.client.UsefulToolsClient;
 public class UsefulToolsMod {
     public static final String MODID = "usefultools";
 
-    public static BlockPlayerInterface blockPlayerInterface = new BlockPlayerInterface();
-    public static BlockCobblegen blockCobblegen = new BlockCobblegen();
-    public static BlockRemoteInventory blockRemoteInventory = new BlockRemoteInventory();
-
-    public static ItemRemoteInventory itemRemoteInventory = new ItemRemoteInventory();
-
     public static CreativeTabs tab = new CreativeTabs(MODID) {
         @Override
         public Item getTabIconItem() {
             return Item.getItemFromBlock(blockPlayerInterface);
         }
     };
+
+    public static BlockPlayerInterface blockPlayerInterface = new BlockPlayerInterface();
+    public static BlockCobblegen blockCobblegen = new BlockCobblegen();
+    public static BlockRemoteInventory blockRemoteInventory = new BlockRemoteInventory();
+
+    public static ItemRemoteInventory itemRemoteInventory = new ItemRemoteInventory();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent ev) {
