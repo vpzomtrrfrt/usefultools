@@ -19,6 +19,7 @@ public class BlockCobblegen extends BlockContainer {
         setUnlocalizedName(NAME);
         setHardness(10);
         setHarvestLevel("pickaxe", 0);
+        setCreativeTab(UsefulToolsMod.tab);
     }
 
     @Override

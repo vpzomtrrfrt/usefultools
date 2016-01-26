@@ -17,6 +17,7 @@ public class ItemRemoteInventory extends Item {
     public ItemRemoteInventory() {
         setMaxStackSize(1);
         setUnlocalizedName(NAME);
+        setCreativeTab(UsefulToolsMod.tab);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class ItemRemoteInventory extends Item {
             }
         }
         else {
-            if(stack.getTagCompound() != null && stack.getTagCompound().hasKey("Dest")) {
+            if(stack.getTagCompound() != null && stack.getTagCompound().hasKey("Dest") && stack.stackSize > 0) {
                 if(!w.getBlockState(pos).getBlock().isReplaceable(w, pos)) {
                     pos = pos.offset(facing);
                 }
@@ -40,6 +41,7 @@ public class ItemRemoteInventory extends Item {
                     w.setBlockState(pos, UsefulToolsMod.blockRemoteInventory.getStateFromMeta(0));
                     TileEntityRemoteInventory te = (TileEntityRemoteInventory) w.getTileEntity(pos);
                     te.dest = BlockPos.fromLong(stack.getTagCompound().getLong("Dest"));
+                    stack.stackSize--;
                     return true;
                 }
             }

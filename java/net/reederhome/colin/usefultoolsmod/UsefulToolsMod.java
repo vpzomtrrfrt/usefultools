@@ -1,6 +1,8 @@
 package net.reederhome.colin.usefultoolsmod;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -20,6 +22,13 @@ public class UsefulToolsMod {
     public static BlockRemoteInventory blockRemoteInventory = new BlockRemoteInventory();
 
     public static ItemRemoteInventory itemRemoteInventory = new ItemRemoteInventory();
+
+    public static CreativeTabs tab = new CreativeTabs(MODID) {
+        @Override
+        public Item getTabIconItem() {
+            return Item.getItemFromBlock(blockPlayerInterface);
+        }
+    };
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent ev) {

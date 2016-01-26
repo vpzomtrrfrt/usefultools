@@ -22,6 +22,7 @@ public class BlockPlayerInterface extends BlockContainer {
         super(Material.rock);
         setHardness(2);
         setUnlocalizedName(NAME);
+        setCreativeTab(UsefulToolsMod.tab);
     }
 
     @Override
