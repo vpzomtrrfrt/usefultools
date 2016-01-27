@@ -1,13 +1,21 @@
 package net.reederhome.colin.usefultoolsmod;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -32,6 +40,7 @@ public class UsefulToolsMod {
     public static BlockDigitalCabinet blockDigitalCabinet = new BlockDigitalCabinet();
 
     public static ItemRemoteInventory itemRemoteInventory = new ItemRemoteInventory();
+    public static ItemEntitySucker itemEntitySucker = new ItemEntitySucker();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent ev) {
@@ -44,6 +53,7 @@ public class UsefulToolsMod {
         GameRegistry.registerBlock(blockDigitalCabinet, blockDigitalCabinet.NAME);
 
         GameRegistry.registerItem(itemRemoteInventory, itemRemoteInventory.NAME);
+        GameRegistry.registerItem(itemEntitySucker, itemEntitySucker.NAME);
 
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, "PlayerInterface");
         GameRegistry.registerTileEntity(TileEntityCobblegen.class, "Cobblegen");
@@ -54,11 +64,38 @@ public class UsefulToolsMod {
         GameRegistry.addRecipe(new ShapedOreRecipe(itemRemoteInventory, "wiw", "wew", "wiw", 'w', "plankWood", 'i', "ingotIron", 'e', Items.ender_pearl));
         GameRegistry.addShapelessRecipe(new ItemStack(blockPlayerInterface), itemRemoteInventory, Items.rotten_flesh);
         GameRegistry.addRecipe(new ShapedOreRecipe(blockObsidiPlate, "oo", 'o', Blocks.obsidian));
+
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Mod.EventHandler
     @SideOnly(Side.CLIENT)
     public void clientInit(FMLInitializationEvent ev) {
         UsefulToolsClient.registerClientThings();
+    }
+
+    @SubscribeEvent
+    public void onEntityInteract(EntityInteractEvent ev) {
+        ItemStack held = ev.entityLiving.getHeldItem();
+        if(held != null) {
+            if(held.getItem().equals(itemEntitySucker)) {
+                if(ev.target != null && !(ev.target instanceof EntityPlayer) && !(held.hasTagCompound() && held.getTagCompound().hasKey("EntityId"))) {
+                    NBTTagCompound tag;
+                    if(held.hasTagCompound()) {
+                        tag = held.getTagCompound();
+                    }
+                    else {
+                        tag = new NBTTagCompound();
+                        held.setTagCompound(tag);
+                    }
+                    NBTTagCompound et = new NBTTagCompound();
+                    ev.target.writeToNBT(et);
+                    tag.setTag("Entity", et);
+                    tag.setInteger("EntityId", EntityList.getEntityID(ev.target));
+                    held.setItemDamage(1);
+                    ev.target.worldObj.removeEntity(ev.target);
+                }
+            }
+        }
     }
 }
