@@ -12,6 +12,7 @@ public class UsefulToolsClient {
         registerBlock(UsefulToolsMod.blockCobblegen, UsefulToolsMod.blockCobblegen.NAME);
         registerBlock(UsefulToolsMod.blockRemoteInventory, UsefulToolsMod.blockRemoteInventory.NAME);
         registerBlock(UsefulToolsMod.blockObsidiPlate, UsefulToolsMod.blockObsidiPlate.NAME);
+        registerBlock(UsefulToolsMod.blockDigitalCabinet, UsefulToolsMod.blockDigitalCabinet.NAME);
         registerItem(UsefulToolsMod.itemRemoteInventory, UsefulToolsMod.itemRemoteInventory.NAME);
     }
 

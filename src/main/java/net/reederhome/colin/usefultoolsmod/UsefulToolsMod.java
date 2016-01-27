@@ -29,6 +29,7 @@ public class UsefulToolsMod {
     public static BlockCobblegen blockCobblegen = new BlockCobblegen();
     public static BlockRemoteInventory blockRemoteInventory = new BlockRemoteInventory();
     public static BlockObsidiPlate blockObsidiPlate = new BlockObsidiPlate();
+    public static BlockDigitalCabinet blockDigitalCabinet = new BlockDigitalCabinet();
 
     public static ItemRemoteInventory itemRemoteInventory = new ItemRemoteInventory();
 
@@ -40,12 +41,14 @@ public class UsefulToolsMod {
         GameRegistry.registerBlock(blockCobblegen, blockCobblegen.NAME);
         GameRegistry.registerBlock(blockRemoteInventory, blockRemoteInventory.NAME);
         GameRegistry.registerBlock(blockObsidiPlate, blockObsidiPlate.NAME);
+        GameRegistry.registerBlock(blockDigitalCabinet, blockDigitalCabinet.NAME);
 
         GameRegistry.registerItem(itemRemoteInventory, itemRemoteInventory.NAME);
 
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, "PlayerInterface");
         GameRegistry.registerTileEntity(TileEntityCobblegen.class, "Cobblegen");
         GameRegistry.registerTileEntity(TileEntityRemoteInventory.class, "RemoteInventory");
+        GameRegistry.registerTileEntity(TileEntityDigitalCabinet.class, "DigitalCabinet");
 
         GameRegistry.addRecipe(new ShapedOreRecipe(blockCobblegen, "ccc", "wrl", "ccc", 'c', "cobblestone", 'w', Items.water_bucket, 'r', "dustRedstone", 'l', Items.lava_bucket));
         GameRegistry.addRecipe(new ShapedOreRecipe(itemRemoteInventory, "wiw", "wew", "wiw", 'w', "plankWood", 'i', "ingotIron", 'e', Items.ender_pearl));
